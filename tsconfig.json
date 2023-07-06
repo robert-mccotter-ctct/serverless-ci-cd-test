@@ -1,0 +1,55 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": false,
+    "noEmitHelpers": false,
+    "strictNullChecks": false,
+    "baseUrl": "./*.ts",
+    "outDir": "./build",
+    "paths": {},
+    "lib": [
+      "es2017"
+    ],
+    "module": "commonjs",
+    "types": [
+      "node",
+      "aws-lambda",
+      "pg",
+      "mocha",
+      "jest",
+      "sinon"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "typings.d.ts",
+    "typings.entitlements.d.ts",
+    "typings.logging.d.ts",
+    "typings.paged.d.ts",
+    "typings.receiver.d.ts"
+    
+  ],
+  "include": [
+    "src/**/*.ts",
+    "**/*.d.ts",
+    "test/**/*.ts"
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
+  },
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  }
+}

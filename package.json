@@ -4,7 +4,7 @@
   "description": "Testing Serverless CI/CD",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "mocha --require ts-node/register --watch-extension ts 'test/**/*.ts' --files"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,12 @@
   },
   "homepage": "https://github.com/robert-mccotter-ctct/serverless-ci-cd-test#readme",
   "devDependencies": {
-    "aws-lambda": "^1.0.7"
+    "@types/chai": "^4.3.5",
+    "@types/jest": "^29.5.2",
+    "@types/mocha": "^10.0.1",
+    "aws-lambda": "^1.0.7",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0",
+    "ts-node": "^10.9.1"
   }
 }
