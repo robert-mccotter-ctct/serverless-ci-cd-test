@@ -1,0 +1,66 @@
+# write a yml file for serverless framework to deploy app to AWS
+service: serverless-ci-cd-test
+
+provider:
+  name: aws
+  deploymentMethod: direct
+  architecture: x86_64
+  runtime: nodejs18.x
+  memorySize: 128
+  stage: ${opt:stage, 'development'}
+  region: us-east-1
+
+  environment: 
+    SQS_QUEUE_URL: { Ref: NewSQSQueue }
+  iamRoleStatements:
+    - Effect: Allow
+      Action: 
+        - sqs:*
+      Resource: 
+        Fn::GetAtt: [ NewSQSQueue, Arn ]
+
+  resources: 
+    Resources: 
+      NewSQSQueue:
+        Type: "AWS::SQS::Queue"
+        Properties: 
+          QueueName: ci-cd-test-${self:provider.stage}-queue
+          FifoQueue: false
+
+  prune: 
+    automatic: true
+    number: 5
+  deploymentStage: ${self:provider.stage}
+
+  functions: 
+    manualTrigger: 
+      handler: src/manualTrigger.handler
+      events: 
+        - http: 
+            path: /manualTrigger
+            method: post
+      iamRoleStatements: 
+      - Effect: Allow
+        Action: 
+          - sqs:SendMessage
+        Resource: 
+          Fn::GetAtt: [ NewSQSQueue, arn ]
+    queueTrigger: 
+      handler: src/queueTrigger.handler
+      events: 
+        - sqs: 
+            arn: 
+              Fn::GetAtt:
+                - NewSQSQueue
+                - Arn
+      iamRoleStatements: 
+      - Effect: Allow
+        Action: 
+          - sqs:ReceiveMessage
+          - sqs:DeleteMessage
+          - sqs:GetQueueAttributes
+
+        Resource: 
+          Fn::GetAtt: [ NewSQSQueue, arn ]
+plugins: 
+- serverless-iam-roles-per-function                
