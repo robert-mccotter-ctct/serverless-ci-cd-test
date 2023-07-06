@@ -4,8 +4,8 @@ import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
 
 const sqs: SQS = new SQS();
 let queueUrl: string;
-if (process.env.QUEUE_URL) {
-    queueUrl = process.env.QUEUE_URL;
+if (process.env.SQS_QUEUE_URL) {
+    queueUrl = process.env.SQS_QUEUE_URL;
 }
 export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
     let statusCode = 200;
