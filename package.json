@@ -4,7 +4,6 @@
   "description": "Testing Serverless CI/CD",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require ts-node/register --watch-extension ts 'test/**/*.ts' --files"
   },
   "repository": {
     "type": "git",
