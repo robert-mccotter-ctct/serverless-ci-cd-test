@@ -22,7 +22,9 @@ resources:
     NewSQSQueue:
       Type: "AWS::SQS::Queue"
       Properties: 
-        QueueName: ci-cd-test-${self:provider.stage}-queue
+        QueueName: ${self:provider.stage}-ci-cd-test-queue
+        SqsManagedSseEnabled: false
+        FifoQueue: false
 custom:
   prune: 
     automatic: true
