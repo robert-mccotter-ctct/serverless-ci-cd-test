@@ -37,12 +37,12 @@ functions:
       - http: 
           path: /manualTrigger
           method: post
-    iamRoleStatements: 
-    - Effect: Allow
-      Action: 
-        - sqs:SendMessage
-      Resource: 
-        Fn::GetAtt: [ TestQueue, Arn ]
+    # iamRoleStatements: 
+    # - Effect: Allow
+    #   Action: 
+    #     - sqs:SendMessage
+    #   Resource: 
+    #     Fn::GetAtt: [ TestQueue, Arn ]
 #   queueTrigger: 
 #     handler: src/queueTrigger.handler
 #     events: 
