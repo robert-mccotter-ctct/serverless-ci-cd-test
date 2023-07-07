@@ -55,8 +55,7 @@ functions:
         - sqs:ReceiveMessage
         - sqs:DeleteMessage
         - sqs:GetQueueAttributes
-
       Resource: 
-        Fn::GetAtt: [ TestQueue, arn ]
+        Fn::GetAtt: [ TestQueue, Arn ]
 plugins: 
 - serverless-iam-roles-per-function                
