@@ -15,11 +15,11 @@ iamRoleStatements:
     Action: 
       - sqs:*
     Resource: 
-      Fn::GetAtt: [ NewSQSQueue, Arn ]
+      Fn::GetAtt: [ TestQueue, Arn ]
 
 resources: 
   Resources: 
-    NewSQSQueue:
+    TestQueue:
       Type: "AWS::SQS::Queue"
       Properties: 
         QueueName: ${self:provider.stage}-ci-cd-test-queue
@@ -30,18 +30,19 @@ custom:
     number: 5
   deploymentStage: ${self:provider.stage}
 
-# functions: 
-#   manualTrigger: 
-#     handler: src/manualTrigger.handler
-#     events: 
-#       - http: 
-#           path: /manualTrigger
-#           method: post
-#     iamRoleStatements: 
-#     - Effect: Allow
-#       Action: 
-#         - sqs:SendMessage
-#       Resource:         
+functions: 
+  manualTrigger: 
+    handler: src/manualTrigger.handler
+    events: 
+      - http: 
+          path: /manualTrigger
+          method: post
+    iamRoleStatements: 
+    - Effect: Allow
+      Action: 
+        - sqs:SendMessage
+      Resource: 
+        Fn::GetAtt: [ TestQueue, Arn ]
 #   queueTrigger: 
 #     handler: src/queueTrigger.handler
 #     events: 
