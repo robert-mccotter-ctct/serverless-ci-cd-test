@@ -43,22 +43,22 @@ functions:
         - sqs:SendMessage
       Resource: 
         Fn::GetAtt: [ TestQueue, Arn ]
-#   queueTrigger: 
-#     handler: src/queueTrigger.handler
-#     events: 
-#       - sqs: 
-#           arn: 
-#             Fn::GetAtt:
-#               - TestQueue
-#               - Arn
-#     iamRoleStatements: 
-#     - Effect: Allow
-#       Action: 
-#         - sqs:ReceiveMessage
-#         - sqs:DeleteMessage
-#         - sqs:GetQueueAttributes
+  queueTrigger: 
+    handler: src/queueTrigger.handler
+    events: 
+      - sqs: 
+          arn: 
+            Fn::GetAtt:
+              - TestQueue
+              - Arn
+    iamRoleStatements: 
+    - Effect: Allow
+      Action: 
+        - sqs:ReceiveMessage
+        - sqs:DeleteMessage
+        - sqs:GetQueueAttributes
 
-#       Resource: 
-#         Fn::GetAtt: [ TestQueue, arn ]
+      Resource: 
+        Fn::GetAtt: [ TestQueue, arn ]
 plugins: 
 - serverless-iam-roles-per-function                
