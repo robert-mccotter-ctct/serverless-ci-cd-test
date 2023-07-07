@@ -48,9 +48,7 @@ functions:
     events: 
       - sqs: 
           arn: 
-            Fn::GetAtt:
-              - TestQueue
-              - Arn
+            Fn::GetAtt: [ TestQueue, Arn ]
     iamRoleStatements: 
     - Effect: Allow
       Action: 
