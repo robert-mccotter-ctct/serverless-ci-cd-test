@@ -4,7 +4,6 @@ service: serverless-ci-cd-test
 provider:
   name: aws
   deploymentMethod: direct
-  architecture: x86_64
   runtime: nodejs18.x
   memorySize: 128
   stage: ${opt:stage, 'development'}
