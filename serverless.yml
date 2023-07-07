@@ -9,7 +9,7 @@ provider:
   region: us-east-1
 
 environment: 
-  SQS_QUEUE_URL: { Ref: NewSQSQueue }
+  SQS_QUEUE_URL: { Ref: TestQueue }
 iamRoleStatements:
   - Effect: Allow
     Action: 
@@ -37,19 +37,19 @@ functions:
       - http: 
           path: /manualTrigger
           method: post
-    # iamRoleStatements: 
-    # - Effect: Allow
-    #   Action: 
-    #     - sqs:SendMessage
-    #   Resource: 
-    #     Fn::GetAtt: [ TestQueue, Arn ]
+    iamRoleStatements: 
+    - Effect: Allow
+      Action: 
+        - sqs:SendMessage
+      Resource: 
+        Fn::GetAtt: [ TestQueue, Arn ]
 #   queueTrigger: 
 #     handler: src/queueTrigger.handler
 #     events: 
 #       - sqs: 
 #           arn: 
 #             Fn::GetAtt:
-#               - NewSQSQueue
+#               - TestQueue
 #               - Arn
 #     iamRoleStatements: 
 #     - Effect: Allow
@@ -59,6 +59,6 @@ functions:
 #         - sqs:GetQueueAttributes
 
 #       Resource: 
-#         Fn::GetAtt: [ NewSQSQueue, arn ]
+#         Fn::GetAtt: [ TestQueue, arn ]
 plugins: 
 - serverless-iam-roles-per-function                
