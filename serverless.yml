@@ -23,7 +23,6 @@ resources:
       Type: "AWS::SQS::Queue"
       Properties: 
         QueueName: ci-cd-test-${self:provider.stage}-queue
-        FifoQueue: false
 custom:
   prune: 
     automatic: true
