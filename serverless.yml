@@ -8,14 +8,16 @@ provider:
   stage: ${opt:stage, 'development'}
   region: us-east-1
 
-environment: 
-  SQS_QUEUE_URL: { Ref: TestQueue }
-iamRoleStatements:
-  - Effect: Allow
-    Action: 
-      - sqs:*
-    Resource: 
-      Fn::GetAtt: [ TestQueue, Arn ]
+  environment: 
+    SQS_QUEUE_URL: { Ref: TestQueue }
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action: 
+            - sqs:*
+          Resource: 
+            Fn::GetAtt: [ TestQueue, Arn ]
 
 resources: 
   Resources: 
