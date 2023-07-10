@@ -29,6 +29,7 @@
         "mocha": "^10.2.0",
         "serverless-iam-roles-per-function": "^3.2.0",
         "serverless-plugin-typescript": "^2.1.5",
-        "ts-node": "^10.9.1"
+        "ts-node": "^10.9.1",
+        "typescript": "^9.3.1"
     }
 }
