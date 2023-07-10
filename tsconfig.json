@@ -1,22 +1,14 @@
+	
 {
   "compilerOptions": {
-    "target": "es2015",
+    "preserveConstEnums": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "target": "es5",
+    "outDir": ".build",
     "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": false,
-    "noEmitHelpers": false,
-    "strictNullChecks": false,
-    "baseUrl": "./*.ts",
-    "outDir": "./build",
-    "paths": {},
-    "lib": [
-      "es2015"
-    ],
-    "module": "commonjs",
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "lib": ["es2015"],
+    "rootDir": "./"
   }
 }
