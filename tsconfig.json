@@ -1,16 +1,40 @@
 {
   "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "preserveConstEnums": true,
     "strictNullChecks": true,
-    "sourceMap": true,
-    "allowJs": true,
-    "target": "es5",
+    "sourceMap": false,
+    "target": "es2016",
     "outDir": ".build",
     "moduleResolution": "node",
-    "lib": ["es2015"],
-    "rootDir": "./"
+    "lib": [
+      "es2016"
+    ],
+    "rootDir": "./",
+    "baseUrl": "./*.ts",
+    "skipLibCheck": true,
+    "types": [
+      "node",
+      "aws-lambda",
+      "mocha"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "Interfaces.ts"
+    ]
   },
+  "exclude": [
+    "node_modules",
+    "**/*.test.ts"
+  ],
   "include": [
-    "./src/**/*"
-  ]
+    "./src/**/*.ts"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }
