@@ -22,6 +22,7 @@ export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayPr
     if (!result) {
         statusCode = 500;
     }
+    console.log("Sending Message to Queue");
 
     return {
         statusCode: statusCode,
