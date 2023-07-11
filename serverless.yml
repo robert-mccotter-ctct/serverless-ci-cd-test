@@ -1,5 +1,7 @@
 service: serverless-ci-cd-test
 
+package: 
+  individually: true
 provider:
   name: aws
   deploymentMethod: direct
