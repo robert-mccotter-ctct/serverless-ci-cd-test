@@ -12,6 +12,7 @@
   "dependencies": {
     "@middy/core": "^3.4.0",
     "@middy/http-json-body-parser": "^3.4.0",
+    "aws-sdk": "^2.1413.0",
     "serverless-iam-roles-per-function": "^3.2.0",
     "serverless-plugin-typescript": "^2.1.5"
   },
